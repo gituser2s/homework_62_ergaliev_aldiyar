@@ -1,0 +1,18 @@
+{% load django_bootstrap5 %}
+{% load static %}
+{% csrf_token %}
+<div>
+    {% bootstrap_field form.title %}
+</div>
+<div>
+    {% bootstrap_field form.description %}
+</div>
+<div>
+    {% bootstrap_field form.start_date %}
+</div>
+<div>
+    {% bootstrap_field form.end_date %}
+</div>
+<div class="form_row">
+    {% bootstrap_button button_type="submit" content=button_text %}
+</div>
