@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block menu %}
+
+{% endblock %}
+{% block content %}
+    {% include 'partial/search.html' %}
+    <h1>Основная страница</h1>
+    {% for task in tasks %}
+        <div class="blocks">
+            <h2>Описание: {{ task.description }}</h2>
+            <h2>Подробно: {{ task.detailed_description }}</h2>
+            <h2>Проект: {{ task.project.title }}</h2>
+            <h2>{{ task.created_at }}</h2>
+            <p>
+                <a href="{% url 'task_detail' task.pk %}">Подробнее о задании..</a>
+            </p>
+        </div>
+    {% empty %}
+            <p class="NOT_FOUND">Задачи не найдены!</p>
+    {% endfor %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}
+</body>
+</html>
