@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Удаление{% endblock %}
+{% block menu %}
+    <a href="{% url 'project_add' %}" class="btn btn-primary">Добавить</a>
+    <a href="{% url 'project_update' project.pk %}" class="btn btn-primary">Обновить</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Вы точно хотите удалить проект?</h1>
+        <p>Описание: {{ project.title }}</p>
+        <p>Подробно: {{ project.description }}</p>
+        <form action="{% url 'project_confirm_delete' project.pk%}" method="post">
+            {% csrf_token %}
+            <p><input type="submit" value="Удалить"></p>
+            <p><a href="{% url 'project_index' %}">Отмена</a></p>
+        </form>
+    </div>
+{% endblock %}
